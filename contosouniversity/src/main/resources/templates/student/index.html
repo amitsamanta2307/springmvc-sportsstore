@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{shared/layout}">
+
+<head>
+    <title>Students</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+        <main role="main" class="pb-3">
+
+            <h2>Students</h2>
+            <p>
+                <a href="#">Create New</a>
+            </p>
+
+            <div th:switch="${students}">
+                <div>
+                    <h5 th:case="null">No record found !!</h5>
+                    <div th:case="*">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Enrollment Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="student : ${students}">
+                                    <td th:text="${student.LastName}"></td>
+                                    <td th:text="${student.FirstMidName}"></td>
+                                    <td th:text="${#dates.format(student.EnrollmentDate, 'MMM dd, yyyy')}"></td>
+                                    <td>
+                                        <a th:href="@{/edit/{id}(id=${student.id})}">Edit</a> |
+                                        <a th:href="@{/detail/{id}(id=${student.id})}">Details</a> |
+                                        <a th:href="@{/delete/{id}(id=${student.id})}">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>
