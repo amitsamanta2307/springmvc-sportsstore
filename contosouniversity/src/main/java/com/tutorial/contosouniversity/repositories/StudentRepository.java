@@ -1,4 +1,4 @@
-package com.tutorial.contosouniversity.repository;
+package com.tutorial.contosouniversity.repositories;
 
 import com.tutorial.contosouniversity.models.Student;
 

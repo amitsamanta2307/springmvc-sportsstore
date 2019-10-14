@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{shared/layout}">
+
+<head>
+    <title>Create</title>
+</head>
+
+<body>
+
+    <div layout:fragment="content">
+    
+        <h2>Create</h2>
+
+		<h4>Student</h4>
+		<hr />
+		<div class="row">
+		    <div class="col-md-4">
+		        <form action="#" th:action="@{/students/create}" th:object="${student}" method="post">
+		            <div class="form-group">
+		                <label for="lastName" class="control-label">Last Name</label>
+		                <input type="text" th:field="*{lastName}" class="form-control" />
+		                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></span>
+		            </div>
+		            <div class="form-group">
+		                <label for="firstMidName" class="control-label">First Name</label>
+		                <input type="text" th:field="*{firstMidName}" class="form-control" />
+		                <span th:if="${#fields.hasErrors('firstMidName')}" th:errors="*{firstMidName}" class="text-danger"></span>
+		            </div>
+		            <div class="form-group">
+		                <label for="enrollmentDate" class="control-label">Enrollment Date</label>
+		                <input type="text" th:field="*{enrollmentDate}" class="form-control" />
+		                <span th:if="${#fields.hasErrors('enrollmentDate')}" th:errors="*{enrollmentDate}" class="text-danger"></span>
+		            </div>
+		            <div class="form-group">
+		                <input type="submit" value="Create" class="btn btn-primary" />
+		            </div>
+		        </form>
+		    </div>
+		</div>
+		
+		<div>
+		    <a th:href="@{/students/list}">Back to List</a>
+		</div>
+		
+    </div>
+
+</body>
+
+</html>

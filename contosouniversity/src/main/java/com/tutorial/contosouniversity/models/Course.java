@@ -16,47 +16,50 @@ import javax.persistence.Table;
 @Table(name = "Course")
 public class Course implements Serializable {
 
-    private static final long serialVersionUID = 610099220126433920L;
+	private static final long serialVersionUID = -6971930528296374044L;
 
-    protected Integer courseId;
-    protected String title;
-    protected Integer credits;
-
-    protected List<Enrollment> enrollments;
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getCredits() {
-        return credits;
-    }
-
-    public void setCredits(Integer credits) {
-        this.credits = credits;
-    }
-
-    @OneToMany(mappedBy="course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Enrollment> getEnrollment() {
-        return enrollments;
-    }
-
-    public void setEnrollment(List<Enrollment> enrollemnts) {
-        this.enrollments = enrollemnts;
-    }
+	private Integer courseId;
+	private String title;
+	private Integer credits;
+	
+	private List<Enrollment> enrollments;
+	
+	public Course() { }
+	
+	public Course(Integer courseId, String title, Integer credits) {
+		this.courseId = courseId;
+		this.title = title;
+		this.credits = credits;
+	}
+	
+	// Getters
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	public Integer getCourseId() {
+		return courseId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public Integer getCredits() {
+		return credits;
+	}
+	@OneToMany(mappedBy="course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public List<Enrollment> getEnrollments() {
+		return enrollments;
+	}
+	
+	// Setters
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setCredits(Integer credits) {
+		this.credits = credits;
+	}
+	public void setEnrollments(List<Enrollment> enrollments) {
+		this.enrollments = enrollments;
+	}
 }
